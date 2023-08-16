@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <canvas width="600" height="500"></canvas>
- 
+
+
     <script>
-        let tela = document.querySelector('canvas');
-        let pincel = tela.getContext('2d');
+        function desenhaQuadrado(x, y) {
+               let tela = document.querySelector('canvas');
+               let pincel = tela.getContext('2d');
+    
+               pincel.fillStyle = 'red';
+               pincel.fillRect(x, y, 50, 50);
+               pincel.fillStroke = 'white';
+               pincel.strokeRect(x, y, 50, 50);    
+        }
 
-        pincel.fillStyle = 'blue';
-        pincel.fillRect(0, 0, 50, 50);
-        pincel.fillStroke = 'white';
-        pincel.strokeRect(0, 0, 50, 50);
-
-
-        pincel.fillRect(51, 0, 50, 50);
-        pincel.strokeRect(51, 0, 50, 50);
-        pincel.fillRect(101, 0, 50, 50);
-        pincel.strokeRect(101, 0, 50, 50);
-
+        var x = 0;
+        var y = 0;
+       while (x < 600 && y < 600) {
+           desenhaQuadrado(x, y);
+           x += 52;
+           y += 10;
+       }
     </script>
 </body>
+
+
 </html>

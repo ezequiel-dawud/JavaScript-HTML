@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 50px;
+        padding: 0;
+    }
+</style>
+
+<body>
+    <canvas width="600" height="400"></canvas>
+
+    <script>
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d');
+
+        var cores = ['blue', 'pink', 'gray', 'yellow', 'red', 'orange', 'purple', 'black'];
+        var indiceCorAtual = 0;
+
+        pincel.fillStyle = ('lightblue');
+        pincel.fillRect(0, 0, 400, 300);
+
+
+        function exibeCirculo(evento) {
+            var x = evento.pageX - tela.offsetLeft;
+            var y = evento.pageY - tela.offsetTop;
+            var raio = 10;
+
+            pincel.fillStyle = cores[indiceCorAtual];
+            pincel.beginPath();
+            pincel.arc(x, y, raio, 0, 2 * 3.14);
+            pincel.fill();
+            console.log(x + ',' + y)
+
+            if (evento.shiftKey){
+                raio = raio + 20;
+            }
+        }
+
+        tela.onclick = exibeCirculo;
+
+         function mudaCor() {
+            indiceCorAtual++;
+           if (indiceCorAtual >= cores.length) {
+            indiceCorAtual = 0;
+          }
+            return false;
+        }
+
+        tela.oncontextmenu = mudaCor;
+    </script>
+</body>
+
+</html>

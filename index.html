@@ -8,35 +8,27 @@
 </head>
 
 <body>
-    <canvas width="600" height="600"></canvas>
+    <canvas width="600" height="400"></canvas>
+<script>
+  var tela = document.querySelector('canvas');
+  var pincel = tela.getContext('2d');
 
-
-    <script>
-        var tela = document.querySelector('canvas');
-        var pincel = tela.getContext('2d');
-
-        pincel.fillStyle = ('lightblue');
-        pincel.fillRect(0, 0, 600, 600);
-
-        pincel.fillStyle = ('lightgreen');
-        pincel.fillRect(0, 0, 200, 600);
-
-        pincel.fillStyle = ('red');
-        pincel.fillRect(400, 0, 600, 600);
-
-        pincel.fillStyle = ('purple');
-        pincel.beginPath();
-        pincel.moveTo(300, 300);
-        pincel.lineTo(200, 600);
-        pincel.lineTo(400, 600);
-        pincel.fill();
-
-        pincel.fillStyle = ('yellow');
-        pincel.beginPath();
-        pincel.arc(300, 300, 150, 10, 160 * 3.14);
-        pincel.fill();
-      
-    </script>
+  function desenhaEsquadro(xa, ya, xc, yc, cor) {
+    pincel.fillStyle = cor
+    pincel.beginPath();
+    pincel.moveTo(xa, ya);
+    pincel.lineTo(xa, yc);
+    pincel.lineTo(xc, yc);
+    pincel.fill();
+    pincel.fillStyle = 'white'
+    pincel.beginPath();
+    pincel.moveTo((6 * xa + xc) / 7, (9 * ya + 5 * yc) / 14);
+    pincel.lineTo((6 * xa + xc) / 7, (ya + 6 * yc) / 7);
+    pincel.lineTo((5 * xa + 9 * xc) / 14, (ya + 6 * yc) / 7);
+    pincel.fill();
+  }
+  desenhaEsquadro(50, 50, 400, 400, 'black');
+</script>
 </body>
 
 </html>
