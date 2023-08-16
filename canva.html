@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="600" height="500"></canvas>
+ 
+    <script>
+        let tela = document.querySelector('canvas');
+        let pincel = tela.getContext('2d');
+
+        pincel.fillStyle = 'blue';
+        pincel.fillRect(0, 0, 50, 50);
+        pincel.fillStroke = 'white';
+        pincel.strokeRect(0, 0, 50, 50);
+
+
+        pincel.fillRect(51, 0, 50, 50);
+        pincel.strokeRect(51, 0, 50, 50);
+        pincel.fillRect(101, 0, 50, 50);
+        pincel.strokeRect(101, 0, 50, 50);
+
+    </script>
+</body>
+</html>

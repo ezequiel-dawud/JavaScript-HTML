@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="250" height="220"></canvas>
+    <script>
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d');
+
+        pincel.fillStyle = ('darkgreen');
+        pincel.fillRect(0, 0, 250, 250);
+       
+        //Olho esquerdo
+        pincel.fillStyle = ('black');
+        pincel.fillRect(30, 50, 65, 60);
+        //Olho direito
+        pincel.fillStyle = ('black');
+        pincel.fillRect(155, 50, 65, 60);
+
+        //boca 
+        pincel.fillStyle = ('black');
+        pincel.fillRect(95, 110, 60, 40);
+
+        pincel.fillStyle = ('black');
+        pincel.fillRect(65, 140, 120, 40);
+
+        pincel.fillStyle = ('black');
+        pincel.fillRect(65, 180, 35, 80);
+
+        pincel.fillStyle = ('black');
+        pincel.fillRect(150, 180, 35, 80);
+    </script>
+</body>
+</html>
