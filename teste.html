@@ -1,54 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <canvas width="600" height="400"></canvas>
+
     <script>
+    
         var tela = document.querySelector('canvas');
         var pincel = tela.getContext('2d');
-        pincel.fillStyle = 'yellow';
+    
+        pincel.fillStyle = 'lightgray';
         pincel.fillRect(0, 0, 600, 400);
-
-        function desenhaCirculo(x, y, raio){
-            pincel.fillStyle = 'red';
+    
+        var raio = 10;
+        var xAleatorio;
+        var yAleatorio;
+    
+        function desenhaCirculo(x, y, raio, cor) {
+    
+            pincel.fillStyle = cor;
             pincel.beginPath();
             pincel.arc(x, y, raio, 0, 2 * Math.PI);
-            pincel.fill(); 
-
-            pincel.fillStyle = 'white';
-            pincel.beginPath();
-            pincel.arc(x - (x * 0.0001), y - (y * 0.0001), raio - (raio * 0.2), 0, 2 * Math.PI);
-            pincel.fill(); 
-
-            pincel.fillStyle = 'red';
-            pincel.beginPath();
-            pincel.arc(x - (x * 0.0001), y - (y * 0.0001), raio - (raio * 0.4), 0, 2 * Math.PI);
-            pincel.fill(); 
-
-        
-            pincel.fillStyle = 'white';
-            pincel.beginPath();
-            pincel.arc(x - (x * 0.0001), y - (y * 0.0001), raio - (raio * 0.6), 0, 2 * Math.PI);
-            pincel.fill(); 
-
-            pincel.fillStyle = 'red';
-            pincel.beginPath();
-            pincel.arc(x - (x * 0.0001), y - (y * 0.0001), raio - (raio * 0.8), 0, 2 * Math.PI);
             pincel.fill();
-
+    
         }
-
-
-        for ( var x = 20; x < 600; x++){
-        desenhaCirculo(x, 200, 30);
-        break;
-        exit;
+    
+        function limpaTela() {
+    
+            pincel.clearRect(0, 0, 600, 400);
+    
+        }
+    
+        function desenhaAlvo(x,y) {
+    
+            desenhaCirculo(x, y, raio+20, 'red');
+            desenhaCirculo(x, y, raio+10, 'white');
+            desenhaCirculo(x, y, raio, 'red');
+    
+        }
+    
+        function sorteiaPosicao(maximo) {
+    
+            return Math.floor(Math.random() * maximo);
+    
+        }
+    
+    function atualizaTela() {
+        limpaTela();
+        xAleatorio = sorteiaPosicao(600);
+        yAleatorio = sorteiaPosicao(400);
+        desenhaAlvo(xAleatorio, yAleatorio);
     }
-        
+    
+    setInterval(atualizaTela, 1000);
+    
+    function dispara(evento) {
+    
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+    
+        if((x > xAleatorio - raio)
+        && (x < xAleatorio + raio)
+        && (y > yAleatorio - raio)
+        && (y < yAleatorio + raio)) {
+    
+            alert('Acertou!');
+    
+        }
+    
+    
+    }
+    
+    tela.onclick = dispara;
+    
     </script>
 </body>
+
 </html>
